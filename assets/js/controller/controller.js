@@ -4,11 +4,19 @@ import Product from "../views/product.js";
 const products = ProductManager.getProducts();
 
 class Controller{
+    
     /**
-     * Traite les données rerounées par l'API et utilise la methode renderProducts de la class home pour afficher les produits sur la page d'accueil
+     * Affiche tous les produits sur la page d'accueil
      */
     home(){
         products.then(products => Product.renderProducts(products))
+    }
+
+    /**
+    * Affiche un produit sur la page produit
+    */
+    productPage(){
+        products.then(products => Product.renderOneProduct(products))
     }
 }
 

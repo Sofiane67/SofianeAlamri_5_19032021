@@ -1,4 +1,8 @@
-import {productsContainer} from "../helpers/dom.js"
+import {productsContainer} from "../helpers/dom.js";
+import {getUrlParams} from "../helpers/functions.js";
+import { findOneProduct} from "../helpers/functions.js";
+import {selectElement} from "../helpers/dom.js";
+import { btnAddToart} from "../helpers/dom.js";
 
 export default class Product{
 
@@ -30,5 +34,21 @@ export default class Product{
      */
     static renderProducts(products){
         products.map(product => productsContainer.insertAdjacentHTML("afterbegin", this.template(product))); 
+    }
+
+    /**
+     * Récupère un produit en fonction du paramètre de l'url et l'affiche
+     * @param {Array} products Tableau retourné par l'api fetch
+     */
+    static renderOneProduct(products){
+        const param = getUrlParams();
+
+        //Récupère le produit correspondant a l'id en paramètre
+        const oneProduct = findOneProduct(products, param);
+
+        productsContainer.insertAdjacentHTML("afterbegin", this.template(oneProduct));
+        btnAddToart.setAttribute("data-id", param);
+
+        oneProduct.lenses.forEach(lense => selectElement.insertAdjacentHTML("afterbegin", `<option value="${lense}">${lense}</option>`));
     }
 }

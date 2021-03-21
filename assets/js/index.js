@@ -3,8 +3,6 @@ import controller from "./controller/controller.js"
 
 if (!getUrlParams()){
     controller.home();
+}else{
+    controller.productPage();
 }
-
-
-
-
