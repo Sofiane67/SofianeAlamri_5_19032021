@@ -1,4 +1,4 @@
-import {selectElement} from "../helpers/dom.js";
+import {selectElement, removeBtn} from "../helpers/dom.js";
 import { findOneProduct } from "../helpers/functions.js";
 import ProductManager from '../models/productManager.js';
 import View from "../views/renderProduct.js";
@@ -22,6 +22,17 @@ class Controller{
         products.then(products => View.renderOneProduct(products))
     }
 
+    /**
+     * Affiche sur la page panier les produits stockés dans le local storage
+     */
+    cartPage() {
+        const products = JSON.parse(localStorage.getItem("cameras"));
+        View.renderCartPage(products)
+    }
+    
+    /**
+     * Ajoute un produit au panier
+     */
     addToCart(e){
         e.preventDefault();
         const param = e.target.dataset.id;
@@ -29,6 +40,7 @@ class Controller{
         products.then(products => {
             const product = findOneProduct(products, param);
 
+            // Création de l'objet correspondant a un produit qui sera stocké dans le local storage
             const newCart = {
                 _id: product._id, 
                 name: product.name, 
@@ -36,12 +48,11 @@ class Controller{
                 price: product.price, 
                 lense: selectElement.value
             };
-
-            console.log(newCart)
             
             this.cart.push(newCart);        
 
             let dataToBeStored;
+
             if(localStorage.getItem("cameras")){
                 const cameras = JSON.parse(localStorage.getItem("cameras"));
                 cameras.push(newCart)
@@ -49,16 +60,21 @@ class Controller{
             }else{
                 dataToBeStored = this.cart;
             }
-            console.log(JSON.stringify(dataToBeStored))
+             //Stock les produits dans le local storage
             localStorage.setItem("cameras", JSON.stringify(dataToBeStored));
         })
     }
 
-    cartPage(){
-        const products = JSON.parse(localStorage.getItem("cameras"));
+    /**
+     *Supprime un produit du panier
+     */
+    removeProduct(e){
+        const id = e.target.dataset.id;
 
-        console.log(products)
-        View.renderCartPage(products)
+        const productStored = JSON.parse(localStorage.getItem("cameras"));
+        productStored.splice(id, 1);
+        localStorage.setItem("cameras", JSON.stringify(productStored));
+        document.location.reload();
     }
 }
 

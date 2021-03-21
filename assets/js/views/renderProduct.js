@@ -56,11 +56,11 @@ export default class RenderProduct{
     */
     static renderCartPage(products) {
 
-        products.map(product => {
+        products.map((product, index) => {
             const html = `
             <div>
                 ${this.template(product)}
-                <button data-id="${product._id}">Supprimer</button>
+                <button class="btn btn--delete" data-id="${index}">Supprimer</button>
             </div>
         `;
             productsContainer.insertAdjacentHTML("afterbegin", html);
