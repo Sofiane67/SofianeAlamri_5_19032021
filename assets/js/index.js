@@ -1,3 +1,10 @@
+import {getUrlParams} from "./helpers/functions.js";
 import controller from "./controller/controller.js"
 
-controller.home();
+if (!getUrlParams()){
+    controller.home();
+}
+
+
+
+

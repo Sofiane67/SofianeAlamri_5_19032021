@@ -1,7 +1,6 @@
 
 import ProductManager from '../models/productManager.js';
-import Home from "../views/home.js";
-
+import Product from "../views/product.js";
 const products = ProductManager.getProducts();
 
 class Controller{
@@ -9,7 +8,7 @@ class Controller{
      * Traite les données rerounées par l'API et utilise la methode renderProducts de la class home pour afficher les produits sur la page d'accueil
      */
     home(){
-        products.then(products => Home.renderProducts(products))
+        products.then(products => Product.renderProducts(products))
     }
 }
 
