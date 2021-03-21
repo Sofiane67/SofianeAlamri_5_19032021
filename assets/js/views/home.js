@@ -1,9 +1,14 @@
 const productsContainer = document.querySelector("#products");
 
 export default class Home{
-    static renderProducts(product){
+
+    /**
+     * Insére dans le DOM tous les produits retournés par l'API
+     * @param {Array} products Tableau retourné par l'api fetch
+     */
+    static renderProducts(products){
         
-        product.map(product => {
+        products.map(product => {
             const html =
                 `
                 <a href="pages/produit.html?id=${product._id}" class="card">

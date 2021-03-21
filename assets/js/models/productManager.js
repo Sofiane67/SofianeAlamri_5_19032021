@@ -1,5 +1,10 @@
 
 export default class ProductManager{
+
+    /**
+     * Effectue un appel API pour récupérer les données
+     * @returns {Array} Retourne un tableau d'objets
+     */
     static async getProducts(){
         try{
             const response = await fetch("http://localhost:3000/api/cameras");
