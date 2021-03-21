@@ -4,36 +4,34 @@ import { findOneProduct} from "../helpers/functions.js";
 import {selectElement} from "../helpers/dom.js";
 import { btnAddToart} from "../helpers/dom.js";
 
-export default class Product{
-
+export default class RenderProduct{
     /**
      * Génére un template html pour afficher un produit
      * @param {Array} data Tableau retourné par l'api fetch contenant tous les produits
-     * @returns 
+     * @returns {String}
      */
     static template(data){
         return `
-        <a href="pages/produit.html?id=${data._id}" class="card">
+        
             <figure class="camera">
                 <div class="camera__img-box">
                     <img src="${data.imageUrl}" alt="" class="camera__img">
                 </div>
                 <figcaption class="camera__caption">
                     <p class="camera__name">${data.name}</p>
-                    <p class="camera__description">${data.description}</p>
+                    ${getUrlParams() ? `<p class="camera__description">${data.description}</p>`:""}
                     <p class="camera__price">${data.price}</p>
                 </figcaption>
             </figure>
-        </a>
         `;
     }
 
     /**
-     * Insére dans le DOM tous les produits retournés par l'API
+     * Affiche sur la page d'accueil tous les produits retournés par l'API
      * @param {Array} products Tableau retourné par l'api fetch
      */
-    static renderProducts(products){
-        products.map(product => productsContainer.insertAdjacentHTML("afterbegin", this.template(product))); 
+    static renderHomePage(products){
+        products.map(product => productsContainer.insertAdjacentHTML("afterbegin", `<a href="/pages/produit.html?id=${product._id}" class="card">${this.template(product)}</a>`));
     }
 
     /**
@@ -50,5 +48,22 @@ export default class Product{
         btnAddToart.setAttribute("data-id", param);
 
         oneProduct.lenses.forEach(lense => selectElement.insertAdjacentHTML("afterbegin", `<option value="${lense}">${lense}</option>`));
+    }
+
+    /**
+    * Affiche sur la page panier tous les produits stocké dans le localStorage
+    * @param {Array} products Tableau retourné par localStorage
+    */
+    static renderCartPage(products) {
+
+        products.map(product => {
+            const html = `
+            <div>
+                ${this.template(product)}
+                <button data-id="${product._id}">Supprimer</button>
+            </div>
+        `;
+            productsContainer.insertAdjacentHTML("afterbegin", html);
+        });
     }
 }
