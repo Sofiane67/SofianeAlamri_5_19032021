@@ -1,3 +1,4 @@
+import {selectElement} from "./dom.js";
 /**
  * 
  * @returns Retourne la valeur du paramètre id de l'url
