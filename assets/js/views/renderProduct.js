@@ -12,7 +12,6 @@ export default class RenderProduct{
      */
     static template(data){
         return `
-        
             <figure class="camera">
                 <div class="camera__img-box">
                     <img src="${data.imageUrl}" alt="" class="camera__img">
@@ -44,7 +43,7 @@ export default class RenderProduct{
         //Récupère le produit correspondant a l'id en paramètre
         const oneProduct = findOneProduct(products, param);
 
-        productsContainer.insertAdjacentHTML("afterbegin", this.template(oneProduct));
+        productsContainer.insertAdjacentHTML("afterbegin", `<div class="card card--product-page">${this.template(oneProduct)} </div>`);
         btnAddToart.setAttribute("data-id", param);
 
         oneProduct.lenses.forEach(lense => selectElement.insertAdjacentHTML("afterbegin", `<option value="${lense}">${lense}</option>`));

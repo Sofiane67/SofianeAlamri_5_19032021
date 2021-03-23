@@ -22,6 +22,7 @@ a{
 
 .header{
     background-color: #fff;
+    max-height: 145px;
 }
 
 .header__content{
@@ -59,6 +60,7 @@ a{
 .products{
     padding: 30px;
     display: grid;
+    grid-template-rows: min-content;
     grid-gap: 30px;
     justify-content: center;
 }
@@ -85,17 +87,13 @@ a{
 }
 
 .camera__name{
-    font-weight: bold;
+    font-weight: 900;
+    font-size: 22px;
 }
 
-/* Page prduit */
-
-.product{
-    padding: 0 30px;
-}
-
-.alert--hidden{
-    display: none;
+.camera__price{
+    /* font-size: 1px; */
+    font-weight: 700;
 }
 
 .footer{
@@ -118,7 +116,89 @@ a{
     text-decoration: underline;
 }
 
+
+
+
+/*Page panier*/
+.alert--hidden{
+    display: none;
+}
+
+/* Page produit */
+
+    .card--product-page .camera{
+        flex-direction: column;
+    }
+
+    .card--product-page .camera__img-box{
+        width: 100%;
+        border: 20px 20px 0 0;
+    }
+
+    .card--product-page .camera__img{
+        border-radius: 20px 20px 0 0;
+    }
+
+    .card--product-page .camera__caption{
+        flex-direction: column;
+        padding: 0 20px
+    }
+
+    .card--product-page .camera__caption p{
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .card--product-page .camera__caption p.camera__description{
+        text-align: justify;
+    }
+
+    .form-lense{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .form-lense__group{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-lense__label{
+        font-size: 18px;
+    }
+
+    .form-lense__select{
+        margin-top: 5px;
+        width: 100%;
+        max-width: 255px;
+        height: 30px;
+        font-size: inherit;
+        font-family: inherit;
+    }
+
+    .btn{
+        padding: 10px;
+        align-self: center;
+        border: none;
+        outline: none;
+        background-color: #8f5bfc; 
+        color: #fff;
+        border-radius: 5px;
+        transition: all .2s;
+    }
+
+    .btn:hover{
+        background-color: #7a4ddb; 
+    }
+
+
 @media only screen and (min-width: 600px){
+    .header{
+        max-height: 100px;
+    }
     .header__content{
         flex-direction: row;
         max-width: 1080px;
