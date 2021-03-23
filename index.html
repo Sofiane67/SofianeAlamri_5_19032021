@@ -6,24 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orinoco - Remonter le temps avec nos caméras vintage </title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="assets/css/style.css" as="style">
     <link rel="stylesheet" href="assets/css/style.css">
     <script defer type="module" src="assets/js/index.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
+    <header class="header">
+        <div class="header__content">
             <div class="logo-box">
                 <img src="assets/img/logo.png" alt="Logo de l'entreprise Orinoco" class="logo">
             </div>
             <nav class="nav">
-                <ul>
-                    <li><a href="./">Accueil</a></li>
-                    <li><a href="/pages/panier.html">Mon panier</a></li>
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="./" class="nav__link">Accueil</a></li>
+                    <li class="nav__item"><a href="/pages/panier.html" class="nav__link">Mon panier</a></li>
                 </ul>
             </nav>
-        </header>
-        <main class="products" id="products"></main>
-    </div>
+        </div>
+        
+    </header>
+    <main class="products" id="products"></main>
+    <footer class="footer">
+        <div class="footer__text">
+            <a href="#" class="footer__link">Politique de confidentialité</a>
+            <a href="#" class="footer__link">Conditions générales de ventes</a>
+            <a href="#" class="footer__link">Mentions légales</a>
+        </div>
+    </footer>
 </body>
 </html>

@@ -3,24 +3,64 @@
     padding: 0;
 }
 
-.container{
-    width: 100%;
+body{
+    font-family: 'Roboto', sans-serif;
+    color: #4e4e4e;
+    background-color: #eee;
+    height: 100vh;
+    display: grid;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: currentColor;
 }
 
 .header{
-    padding: 0 30px;
+    background-color: #fff;
+}
+
+.header__content{
     display: flex;
     flex-direction: column;
+}
+
+.logo-box{
+    text-align: center;
+    padding: 15px 0;
 }
 
 .logo{
     width: 250px;
 }
 
+.nav__list{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nav__item{
+    flex: 1;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    border-radius: 20px;
+    background-color: #fff;
+}
+
 .products{
-    padding: 0 30px;
+    padding: 30px;
     display: grid;
     grid-gap: 30px;
+    justify-content: center;
 }
 
 .camera{
@@ -35,6 +75,17 @@
 .camera__img{
     width: 100%;
     height: 100%;
+    border-radius: 20px 20px 0 0;
+}
+
+.camera__caption{
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.camera__name{
+    font-weight: bold;
 }
 
 /* Page prduit */
@@ -47,32 +98,70 @@
     display: none;
 }
 
+.footer{
+    background-color: #4e4e4e;
+    padding: 20px 0;
+}
+
+.footer__text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #eee;
+}
+
+.footer__link{
+    padding: 10px 0;
+}
+
+.footer__link:hover{
+    text-decoration: underline;
+}
+
 @media only screen and (min-width: 600px){
-    .header{
+    .header__content{
         flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .product{
-        width: 70%;
-        min-height: 100vh;
-    }
-}
-
-
-@media only screen and (min-width: 600px) and (max-width:1079px){
-    .products{
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media only screen and (min-width: 1080px){
-    .container{
-        width: 1080px;
+        max-width: 1080px;
         margin: 0 auto;
     }
-    .products{
-        grid-template-columns: repeat(4, 1fr)
+
+    .logo-box{
+        padding-left: 15px;
+    }
+
+    .nav{
+        margin-left: auto;
+    }
+
+    .nav__list{
+        height: 100%;
+    }
+
+    .nav__item{
+        width: 150px;
+        align-items: center;
+    }
+    
+    .card{
+        max-width: 700px;
+    }
+    .camera{
+        display: flex;
+    }
+
+    .camera__img-box{
+        width: 75%;
+        height: 250px;
+    }
+
+    .camera__img{
+        border-radius: 20px 0 0 20px;
+    }
+
+    .camera__caption{
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
     }
 }
 
