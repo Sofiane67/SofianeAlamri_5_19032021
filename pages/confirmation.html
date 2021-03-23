@@ -7,46 +7,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orinoco - Remonter le temps avec nos caméras vintage </title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="../assets/css/style.css" as="style">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script defer type="module" src="../assets/js/index.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <header class="header">
+    <header class="header">
+        <div class="header__content">
             <div class="logo-box">
                 <img src="../assets/img/logo.png" alt="Logo de l'entreprise Orinoco" class="logo">
             </div>
             <nav class="nav">
-                <ul>
-                    <li><a href="../">Accueil</a></li>
-                    <li><a href="panier.html">Mon panier</a></li>
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="../" class="nav__link">Accueil</a></li>
+                    <li class="nav__item"><a href="panier.html" class="nav__link">Mon panier</a></li>
                 </ul>
             </nav>
-        </header>
-        <main>
-              <h1>Votre commande est confirmée</h1>
-              <p>Nous avons le plaisir de vous annoncer que le traitement de commande est en cours</p>
-              <table>
-                  <thead>
-                      <tr>
-                          <th>Récapitulatif de la commande</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>Numéro de commande</td>
-                          <td id="orderId"></td>
-                      </tr>
-                      <tr>
-                          <td>Total</td>
-                          <td id="total"></td>
-                      </tr>
-                  </tbody>
-              </table>
-        </main>
-    </div>
+        </div>
+    </header>
+    <main id="confirmation-box">
+        <h1 class="heading-primary">Confirmation de votre commande</h1>
+        <p>Nous avons le plaisir de vous annoncer que le traitement de votre commande est en cours</p>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Récapitulatif de la commande</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Numéro de commande</td>
+                    <td id="orderId"></td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td id="total"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer class="footer">
+        <div class="footer__text">
+            <a href="#" class="footer__link">Politique de confidentialité</a>
+            <a href="#" class="footer__link">Conditions générales de ventes</a>
+            <a href="#" class="footer__link">Mentions légales</a>
+        </div>
+    </footer>
 </body>
 
 </html>

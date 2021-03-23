@@ -97,6 +97,7 @@ export default class Order{
                 total = price.reduce((total,price) => total + price, 0 );
             })
 
+            localStorage.removeItem("cameras");
             window.location.href = `/pages/confirmation.html?orderId=${orderId}&total=${total}`;
         })
     }

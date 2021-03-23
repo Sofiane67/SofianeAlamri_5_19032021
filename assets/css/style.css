@@ -10,6 +10,7 @@ body{
     background-color: #eee;
     height: 100vh;
     display: grid;
+    grid-template-rows: min-content;
 }
 
 li{
@@ -50,6 +51,15 @@ a{
     padding: 15px 0;
     display: flex;
     justify-content: center;
+}
+
+.nav__link{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.nav__link:hover{
+    color:   #8f5bfc;
 }
 
 .card{
@@ -197,7 +207,14 @@ a{
         padding: 0 30px;
         padding-bottom: 30px;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .heading-3{
+        padding: 20px 0;
+        font-size: 25px;
     }
 
     .form{
@@ -227,7 +244,6 @@ a{
         height: 30px;
         width: 75%;
         outline: none;
-        /* max-width: 220px; */
     }
 
     .form__input:focus{
@@ -237,6 +253,37 @@ a{
     .form__btn{
         width: 150px;
     }
+
+    /* Page confirmation */
+
+    #confirmation-box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 0 30px;
+        text-align: center;
+    }
+
+     table{
+         border-collapse: collapse;
+     }
+
+     tr, td, th{
+        border: solid 1px #4e4e4e;
+        padding: 10px;
+        text-align: center;
+     }
+
+     th{
+         color: #fff;
+         background-color: #7a4ddb;
+     }
+
+     #orderId, #total{
+         font-weight: 500;
+         color: ;
+     }
 
     .btn{
         padding: 10px;
@@ -257,7 +304,6 @@ a{
     }
 
     .alert--red.alert--hidden{
-        /* display: none; */
         height: 0;
         margin-top: 0;
         padding: 0;
