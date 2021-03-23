@@ -1,8 +1,5 @@
-import {productsContainer} from "../helpers/dom.js";
-import {getUrlParams} from "../helpers/functions.js";
-import { findOneProduct} from "../helpers/functions.js";
-import {selectElement} from "../helpers/dom.js";
-import { btnAddToart} from "../helpers/dom.js";
+import {productsContainer, form, selectElement, btnAddToart} from "../helpers/dom.js";
+import {getUrlParams, findOneProduct} from "../helpers/functions.js";
 
 export default class RenderProduct{
     /**
@@ -11,6 +8,7 @@ export default class RenderProduct{
      * @returns {String}
      */
     static template(data){
+        const page = new URL(window.location.href).pathname;
         return `
             <figure class="camera">
                 <div class="camera__img-box">
@@ -18,8 +16,9 @@ export default class RenderProduct{
                 </div>
                 <figcaption class="camera__caption">
                     <p class="camera__name">${data.name}</p>
-                    ${getUrlParams() ? `<p class="camera__description">${data.description}</p>`:""}
+                    ${getUrlParams("id") ? `<p class="camera__description">${data.description}</p>`:""}
                     <p class="camera__price">${data.price}€</p>
+                    ${page === "/pages/panier.html" ? `<button class="btn btn--delete" data-id="${data._id}">Supprimer</button>`:""}
                 </figcaption>
             </figure>
         `;
@@ -54,15 +53,22 @@ export default class RenderProduct{
     * @param {Array} products Tableau retourné par localStorage
     */
     static renderCartPage(products) {
+        let html;
 
-        products.map((product, index) => {
-            const html = `
-            <div>
-                ${this.template(product)}
-                <button class="btn btn--delete" data-id="${index}">Supprimer</button>
-            </div>
-        `;
-            productsContainer.insertAdjacentHTML("afterbegin", html);
-        });
+        if (!products){
+            html = "<p class='emptyCart'>Le panier est vide</p>"
+        }else{
+            products.map(product => {
+                form.classList.remove("hidden");
+
+                html = `
+                    <div class="card card--cart-page">
+                    ${this.template(product)}
+                    </div>
+                `
+            });
+        }
+
+        productsContainer.insertAdjacentHTML("afterbegin", html);
     }
 }

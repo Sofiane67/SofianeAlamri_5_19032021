@@ -75,7 +75,12 @@ class Controller{
 
         const productStored = JSON.parse(localStorage.getItem("cameras"));
         productStored.splice(id, 1);
-        localStorage.setItem("cameras", JSON.stringify(productStored));
+
+        if(productStored < 1){
+            localStorage.removeItem("cameras");
+        }else{
+            localStorage.setItem("cameras", JSON.stringify(productStored));
+        }
         document.location.reload();
     }
 
