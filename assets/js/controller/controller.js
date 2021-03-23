@@ -64,7 +64,12 @@ class Controller{
 
              //Stock les produits dans le local storage
             localStorage.setItem("cameras", JSON.stringify(dataToBeStored));
-        })
+        });
+
+        const alertSuccess = document.querySelector(".alert--green");
+        alertSuccess.classList.remove("alert--hidden");
+
+        setTimeout(() => alertSuccess.classList.add("alert--hidden"), 2000);
     }
 
     /**

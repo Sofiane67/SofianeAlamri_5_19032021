@@ -53,7 +53,7 @@ export default class RenderProduct{
     * @param {Array} products Tableau retourné par localStorage
     */
     static renderCartPage(products) {
-        let html;
+        let html = "";
 
         if (!products){
             html = "<p class='emptyCart'>Le panier est vide</p>"
@@ -61,7 +61,7 @@ export default class RenderProduct{
             products.map(product => {
                 form.classList.remove("hidden");
 
-                html = `
+                html += `
                     <div class="card card--cart-page">
                     ${this.template(product)}
                     </div>
