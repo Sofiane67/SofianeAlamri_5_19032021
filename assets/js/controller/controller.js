@@ -1,7 +1,8 @@
-import {selectElement, removeBtn} from "../helpers/dom.js";
+import {selectElement} from "../helpers/dom.js";
 import { findOneProduct } from "../helpers/functions.js";
 import ProductManager from '../models/productManager.js';
 import View from "../views/renderProduct.js";
+import Order from "../models/order.js";
 
 
 const products = ProductManager.getProducts();
@@ -29,7 +30,7 @@ class Controller{
         const products = JSON.parse(localStorage.getItem("cameras"));
         View.renderCartPage(products)
     }
-    
+
     /**
      * Ajoute un produit au panier
      */
@@ -60,6 +61,7 @@ class Controller{
             }else{
                 dataToBeStored = this.cart;
             }
+
              //Stock les produits dans le local storage
             localStorage.setItem("cameras", JSON.stringify(dataToBeStored));
         })
@@ -75,6 +77,13 @@ class Controller{
         productStored.splice(id, 1);
         localStorage.setItem("cameras", JSON.stringify(productStored));
         document.location.reload();
+    }
+
+    /**
+     * Crée une nouvelle commande (objet Order)
+     */
+    sendOrder(){
+        new Order;
     }
 }
 

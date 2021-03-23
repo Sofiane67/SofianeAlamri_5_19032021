@@ -20,7 +20,7 @@ export default class RenderProduct{
                 <figcaption class="camera__caption">
                     <p class="camera__name">${data.name}</p>
                     ${getUrlParams() ? `<p class="camera__description">${data.description}</p>`:""}
-                    <p class="camera__price">${data.price}</p>
+                    <p class="camera__price">${data.price}€</p>
                 </figcaption>
             </figure>
         `;

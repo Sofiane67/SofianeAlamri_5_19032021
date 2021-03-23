@@ -43,6 +43,10 @@
     padding: 0 30px;
 }
 
+.alert--hidden{
+    display: none;
+}
+
 @media only screen and (min-width: 600px){
     .header{
         flex-direction: row;
