@@ -14,8 +14,7 @@ switch(page){
         controller.sendOrder();
         break;
     case "/pages/confirmation.html":
-        console.log("ok");
+        controller.orderConfirmation();
         break;
     default: controller.home();
 }
-

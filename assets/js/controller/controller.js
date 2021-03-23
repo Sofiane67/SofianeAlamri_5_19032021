@@ -1,5 +1,5 @@
-import {selectElement} from "../helpers/dom.js";
-import { findOneProduct } from "../helpers/functions.js";
+import {selectElement, orderElement} from "../helpers/dom.js";
+import { findOneProduct, getUrlParams } from "../helpers/functions.js";
 import ProductManager from '../models/productManager.js';
 import View from "../views/renderProduct.js";
 import Order from "../models/order.js";
@@ -84,6 +84,17 @@ class Controller{
      */
     sendOrder(){
         new Order;
+    }
+
+    /**
+     * Affichage d'un message de confirmation et du récapitulatif de la commande 
+     */
+    orderConfirmation(){
+        if (!getUrlParams("orderId", "total")) window.location.href = `/`;
+        const {orderId, total} = getUrlParams("orderId", "total");
+        const { idContent, totalContent} = orderElement;
+        idContent.textContent = orderId;
+        totalContent.textContent = `${total}€`;
     }
 }
 

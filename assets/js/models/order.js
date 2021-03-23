@@ -40,7 +40,6 @@ export default class Order{
         //Teste si l'objet contact possède toutes les prorpiétés requise afin de determiner si toutes les informations necessaires à l'envoi du formulaire sont présentes
         for (const property of this.contactProperties) {
             if (!contact.hasOwnProperty(property)){
-                console.log(`la propriété ${property} n'existe pas`)
                 this.readyToSend = false;
                 break;
             }else{
@@ -76,7 +75,6 @@ export default class Order{
         };
 
         const products = this.getProductId();
-        console.log(products);
         const dataToBeSend = JSON.stringify({contact,products});
 
         const header = {
@@ -91,7 +89,6 @@ export default class Order{
         fetch("http://localhost:3000/api/cameras/order", header)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             const orderId = data.orderId;
             const price = [];
             let total;

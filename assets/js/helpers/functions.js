@@ -1,8 +1,17 @@
 /**
- * 
- * @returns Retourne la valeur du paramètre id de l'url
+ * Récupère les paramètres d'une URL
+ * @param  {...String | String} param Peut prendre en argument un ou plusieurs noms de paramètre d'url
+ * @returns {String | Object} Peut retourné un seul paramètre ou plusieurs sous forme d'un objet
  */
-export const getUrlParams = () => new URL(window.location.href).searchParams.get("id");
+export const getUrlParams = (...param) => {
+    if(param.length < 2){
+        return new URL(window.location.href).searchParams.get("id")
+    }else{
+        const params = {};
+        param.map(param => params[param] = new URL(window.location.href).searchParams.get(param));
+        return params;
+    }
+}
 
 /**
  * 
