@@ -203,6 +203,30 @@ a{
         max-width: 150px;
     }
 
+    .cart-array__image{
+        width: 150px;
+    }
+
+    .cart-array__quantity{
+        width: 30px;
+        text-align: center;
+        font-family: inherit;
+        font-size: 15px;
+    }
+
+    .cart-array__btn{
+        border: none;
+        background-color: #7a4ddb;
+        color: #fff;
+        padding: 10px;
+    }
+
+    .cart-array__btn--less,
+    .cart-array__btn--more{
+        
+        
+    }
+
     .form-content{
         padding: 0 30px;
         padding-bottom: 30px;

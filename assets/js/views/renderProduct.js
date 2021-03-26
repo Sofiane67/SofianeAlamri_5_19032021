@@ -1,4 +1,4 @@
-import {productsContainer, form, selectElement, btnAddToart} from "../helpers/dom.js";
+import {productsContainer, form, selectElement, btnAddToart, tableBody} from "../helpers/dom.js";
 import {getUrlParams, findOneProduct} from "../helpers/functions.js";
 
 export default class RenderProduct{
@@ -62,13 +62,26 @@ export default class RenderProduct{
                 form.classList.remove("hidden");
 
                 html += `
-                    <div class="card card--cart-page">
-                    ${this.template(product)}
-                    </div>
+                <tr>
+                    <td>
+                        <img src="${product.imageUrl}" alt="" class="cart-array__image">
+                    </td>
+                    <td>${product.name}</td>
+                    <td>2099€</td>
+                    <td>
+                        <button class="cart-array__btn cart-array__btn--less">-</button>
+                        <input type="text" class="cart-array__quantity" value="${product.quantity}">
+                        <button class="cart-array__btn cart-array__btn--more">+</button>
+                    </td>
+                    <td>${product.price/100}€</td>
+                    <td>
+                        <button class="cart-array__btn cart-array__btn--delete" data-id=${product._id}>Supprimer</button>
+                    </td>
+                </tr>
                 `
             });
         }
 
-        productsContainer.insertAdjacentHTML("afterbegin", html);
+        tableBody.insertAdjacentHTML("afterbegin", html);
     }
 }
