@@ -79,7 +79,12 @@ class Controller{
         const id = e.target.dataset.id;
 
         const productStored = JSON.parse(localStorage.getItem("cameras"));
-        productStored.splice(id, 1);
+        
+        const productToBeRemoved = findOneProduct(productStored, id);
+        
+        const index = productStored.indexOf(productToBeRemoved);
+        
+        productStored.splice(index, 1);
 
         if(productStored < 1){
             localStorage.removeItem("cameras");
