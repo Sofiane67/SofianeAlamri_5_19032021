@@ -98,7 +98,7 @@ export default class Order{
             })
 
             localStorage.removeItem("cameras");
-            window.location.href = `/pages/confirmation.html?orderId=${orderId}&total=${total}`;
+            window.location.href = `/pages/confirmation.html?orderId=${orderId}&total=${total/100}`;
         })
     }
 

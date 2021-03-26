@@ -17,7 +17,7 @@ export default class RenderProduct{
                 <figcaption class="camera__caption">
                     <p class="camera__name">${data.name}</p>
                     ${getUrlParams("id") ? `<p class="camera__description">${data.description}</p>`:""}
-                    <p class="camera__price">${data.price}€</p>
+                    <p class="camera__price">${data.price/100}€</p>
                     ${page === "/pages/panier.html" ? `<button class="btn btn--delete" data-id="${data._id}">Supprimer</button>`:""}
                 </figcaption>
             </figure>
