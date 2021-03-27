@@ -5,9 +5,11 @@ export const selectElement = document.querySelector("#customProduct");
 export const btnAddToart = document.querySelector(".btn__cta--cart");
 
 //Page Panier
-export const removeBtn = document.querySelector(".btn--delete");
+export const formContent = document.querySelector(".form-content");
 export const form = document.querySelector(".form");
+export const table = document.querySelector(".cart-array");
 export const tableBody = document.querySelector(".cart-array__body")
+export const totalOrder = document.querySelector(".cart-array__total-order");
 
 //Formulaire
 export const formBtn = document.querySelector(".form__btn");

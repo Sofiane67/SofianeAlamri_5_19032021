@@ -28,7 +28,7 @@
         </div>
     </header>
     <main class="products" id="products">
-        <table class="cart-array">
+        <table class="cart-array hidden">
             <thead class="cart-array__head">
                 <tr>
                     <th></th>
@@ -40,13 +40,19 @@
                 </tr>
             </thead>
             <tbody class="cart-array__body">
+                
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">Total de la commande : <span class="cart-array__total-order"></span>€</td>
+                </tr>
+            </tfoot>
         </table>
     </main>
     <hr>
-    <div class="form-content">
+    <div class="form-content hidden">
         <h3 class="heading-3">Valider ma commande </h3>
-        <form action="" method="post" class="form hidden">
+        <form action="" method="post" class="form">
             <div class="form__group">
                 <label for="name" class="form__label">Nom</label>
                 <input type="text" name="lastName" id="name" class="form__input">

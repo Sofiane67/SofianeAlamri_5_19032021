@@ -2,6 +2,7 @@ import {selectElement, orderElement} from "../helpers/dom.js";
 import { findOneProduct, getUrlParams } from "../helpers/functions.js";
 import ProductManager from '../models/productManager.js';
 import View from "../views/renderProduct.js";
+import Cart from "../models/cart.js"
 import Order from "../models/order.js";
 
 
@@ -26,15 +27,14 @@ class Controller{
     /**
      * Affiche sur la page panier les produits stockés dans le local storage
      */
-    cartPage() {
-        const products = JSON.parse(localStorage.getItem("cameras"));
-        View.renderCartPage(products)
+    cartPage(){
+        new Cart;
     }
 
     /**
-     * Ajoute un produit au panier
-     */
-    addToCart(e){
+ * Ajoute un produit au panier
+ */
+    addToCart(e) {
         e.preventDefault();
         const param = e.target.dataset.id;
 
@@ -56,29 +56,29 @@ class Controller{
 
             let dataToBeStored;
 
-            if(localStorage.getItem("cameras")){
+            if (localStorage.getItem("cameras")) {
                 const cameras = JSON.parse(localStorage.getItem("cameras"));
 
                 console.log(cameras)
-                
+
                 //Si le produit ajouté au panier existe déja dans le localStorage, on incrémente la quantité de 1
-                if (findOneProduct(cameras, product._id)){
+                if (findOneProduct(cameras, product._id)) {
 
                     const newProduct = findOneProduct(cameras, product._id);
-                    newProduct.quantity ++;
+                    newProduct.quantity++;
 
                     const index = cameras.indexOf(findOneProduct(cameras, product._id));
 
-                    cameras.splice(index,1);   
+                    cameras.splice(index, 1);
                     cameras.push(newProduct);
 
-                }else{
+                } else {
                     cameras.push(newCart);
                 }
 
-                
+
                 dataToBeStored = cameras;
-            }else{
+            } else {
                 dataToBeStored = this.cart;
             }
 
@@ -92,27 +92,6 @@ class Controller{
         // setTimeout(() => alertSuccess.classList.add("alert--hidden"), 2000);
     }
 
-    /**
-     *Supprime un produit du panier
-     */
-    removeProduct(e){
-        const id = e.target.dataset.id;
-
-        const productStored = JSON.parse(localStorage.getItem("cameras"));
-
-        const productToBeRemoved = findOneProduct(productStored, id);
-        
-        const index = productStored.indexOf(productToBeRemoved);
-        
-        productStored.splice(index, 1);
-
-        if(productStored < 1){
-            localStorage.removeItem("cameras");
-        }else{
-            localStorage.setItem("cameras", JSON.stringify(productStored));
-        }
-        document.location.reload();
-    }
 
     /**
      * Crée une nouvelle commande (objet Order)

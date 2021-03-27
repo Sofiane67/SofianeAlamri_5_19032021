@@ -1,4 +1,4 @@
-import {productsContainer, form, selectElement, btnAddToart, tableBody} from "../helpers/dom.js";
+import {productsContainer, formContent, selectElement, btnAddToart, tableBody, table, totalOrder} from "../helpers/dom.js";
 import {getUrlParams, findOneProduct} from "../helpers/functions.js";
 
 export default class RenderProduct{
@@ -54,34 +54,41 @@ export default class RenderProduct{
     */
     static renderCartPage(products) {
         let html = "";
-
+        const totalPerProduct = [];
+        let total;
+        console.log(products)
         if (!products){
             html = "<p class='emptyCart'>Le panier est vide</p>"
+            productsContainer.insertAdjacentHTML("afterbegin", html);
         }else{
             products.map(product => {
-                form.classList.remove("hidden");
-
+                formContent.classList.remove("hidden");
+                table.classList.remove("hidden");
                 html += `
                 <tr>
                     <td>
                         <img src="${product.imageUrl}" alt="" class="cart-array__image">
                     </td>
                     <td>${product.name}</td>
-                    <td>2099€</td>
-                    <td>
-                        <button class="cart-array__btn cart-array__btn--less">-</button>
-                        <input type="text" class="cart-array__quantity" value="${product.quantity}">
-                        <button class="cart-array__btn cart-array__btn--more">+</button>
-                    </td>
                     <td>${product.price/100}€</td>
+                    <td>
+                        <button class="cart-array__btn cart-array__btn--less cart-array__btn--quantity" data-id=${product._id}>-</button>
+                        <input type="text" class="cart-array__quantity" value="${product.quantity}">
+                        <button class="cart-array__btn cart-array__btn--more cart-array__btn--quantity" data-id=${product._id}>+</button>
+                    </td>
+                    <td class="cart-array__total">${(product.price * product.quantity)/100}€</td>
                     <td>
                         <button class="cart-array__btn cart-array__btn--delete" data-id=${product._id}>Supprimer</button>
                     </td>
                 </tr>
                 `
+
+                //Calcul du total de la commande
+                totalPerProduct.push(product.price * product.quantity);
+                total = totalPerProduct.reduce((total, price) => total + price, 0);
             });
         }
-
+        totalOrder.insertAdjacentHTML("afterbegin", total/100);
         tableBody.insertAdjacentHTML("afterbegin", html);
     }
 }

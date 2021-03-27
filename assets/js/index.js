@@ -10,7 +10,7 @@ switch(page){
         break;
     case "/pages/panier.html":
         controller.cartPage();
-        productsContainer.addEventListener("click", controller.removeProduct.bind(controller));
+        // productsContainer.addEventListener("click", controller.removeProduct.bind(controller));
         controller.sendOrder();
         break;
     case "/pages/confirmation.html":
