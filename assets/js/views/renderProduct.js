@@ -56,7 +56,7 @@ export default class RenderProduct{
         let html = "";
         const totalPerProduct = [];
         let total;
-        console.log(products)
+    
         if (!products){
             html = "<p class='emptyCart'>Le panier est vide</p>"
             productsContainer.insertAdjacentHTML("afterbegin", html);
