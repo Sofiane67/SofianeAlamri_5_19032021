@@ -1,4 +1,4 @@
-import {productsContainer, formContent, selectElement, btnAddToart, tableBody, table, totalOrder} from "../helpers/dom.js";
+import {productsContainer, formContent, rightBox,selectElement, btnAddToart, tableBody, table, totalOrder} from "../helpers/dom.js";
 import {getUrlParams, findOneProduct} from "../helpers/functions.js";
 
 export default class RenderProduct{
@@ -30,7 +30,7 @@ export default class RenderProduct{
      * @param {Array} products Tableau retourné par l'api fetch
      */
     static renderHomePage(products){
-        products.map(product => productsContainer.insertAdjacentHTML("afterbegin", `<a href="/pages/produit.html?id=${product._id}" class="card">${this.template(product)}  <span class="card__icon"><i class="far fa-eye"></i></span> </a>`));
+        products.map(product => productsContainer.insertAdjacentHTML("afterbegin", `<a href="/pages/produit.html?id=${product._id}" class="card">${this.template(product)}  <span class="card__icon"><img src="assets/img/eye.svg" alt="icone oeil"></span> </a>`));
     }
 
     /**
@@ -43,7 +43,22 @@ export default class RenderProduct{
         //Récupère le produit correspondant a l'id en paramètre
         const oneProduct = findOneProduct(products, param);
 
-        productsContainer.insertAdjacentHTML("afterbegin", `<div class="card card--product-page">${this.template(oneProduct)} </div>`);
+        const imageHtml = `
+            <div class="left-box">
+                <img src="${oneProduct.imageUrl}" alt="" class="img">
+            </div>
+        `;
+
+        const detailsHtml = `
+            <div class="details">
+                <p class="details__name">${oneProduct.name}</p>
+                <p class="details__price">${oneProduct.price/100}€</p>
+                <p class="details__description">${oneProduct.description}</p>
+            </div>
+        `;
+
+        productsContainer.insertAdjacentHTML("afterbegin", imageHtml);
+        rightBox.insertAdjacentHTML("afterbegin", detailsHtml);
         btnAddToart.setAttribute("data-id", param);
 
         oneProduct.lenses.forEach(lense => selectElement.insertAdjacentHTML("afterbegin", `<option value="${lense}">${lense}</option>`));
@@ -66,21 +81,29 @@ export default class RenderProduct{
                 formContent.classList.remove("hidden");
                 table.classList.remove("hidden");
                 html += `
-                <tr>
-                    <td>
-                        <img src="${product.imageUrl}" alt="" class="cart-array__image">
-                    </td>
-                    <td>${product.name}</td>
-                    <td>${product.price/100}€</td>
-                    <td>
-                        <button class="cart-array__btn cart-array__btn--less cart-array__btn--quantity" data-id=${product._id}>-</button>
-                        <input type="text" class="cart-array__quantity" value="${product.quantity}">
-                        <button class="cart-array__btn cart-array__btn--more cart-array__btn--quantity" data-id=${product._id}>+</button>
-                    </td>
-                    <td class="cart-array__total">${(product.price * product.quantity)/100}€</td>
-                    <td>
-                        <button class="cart-array__btn cart-array__btn--delete" data-id=${product._id}>Supprimer</button>
-                    </td>
+                <tr >
+  
+                        <td>
+                            <img src="${product.imageUrl}" alt="" class="cart-array__image">
+                        </td>
+                        <td class="cart-array__name">${product.name}</td>
+                        <td class="pu">${product.price / 100}€</td>
+
+      
+                        <td>
+                            <span  class="cart-array__quantity-box">
+                                <button class="cart-array__btn cart-array__btn--less cart-array__btn--quantity" data-id=${product._id}>-</button>
+                                <input type="text" class="cart-array__quantity" value="${product.quantity}">
+                                <button class="cart-array__btn cart-array__btn--more cart-array__btn--quantity" data-id=${product._id}>+</button>
+                            </span>
+                        </td>
+                        <td class="cart-array__total">${(product.price * product.quantity)/100}€</td>
+                        <td class="cart-array__trash-box">
+                            <button class="cart-array__btn cart-array__btn--delete" data-id=${product._id}>
+                                <span class="cart-array__icon"><img src="../assets/img/trash.svg" alt="icone poubelle"></span>
+                            </button>
+                        </td>
+   
                 </tr>
                 `
 

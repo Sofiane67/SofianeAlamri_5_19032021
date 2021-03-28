@@ -11,8 +11,9 @@ export default class ProductManager{
             if (!response.ok) throw new Error("Une erreur inatendu s'est produit");
 
             const data = await response.json();
+            console.log(data)
             return data;
-
+            
         }catch(error){
             console.error(error.message)
         }

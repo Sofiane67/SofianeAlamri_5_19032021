@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orinoco - Remonter le temps avec nos caméras vintage </title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" href="../assets/css/style.css" as="style">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script defer type="module" src="../assets/js/index.js"></script>
@@ -32,14 +32,17 @@
             </ul>
         </nav>
     </header>
-    <main  id="render">
-        <form action="" class="form-lense">
-            <p class="form-lense__group">
-                <label for="customProduct" class="form-lense__label">Selectionner une taille de lentille</label>
-                <select id="customProduct" class="form-lense__select"></select>
-            </p>
-            <input class="btn btn__cta btn__cta--cart"  type="submit" value="Ajouter au panier">
-        </form>
+    <main  id="render" class="productsPage">
+        <div class="right-box">
+            <form action="" class="form-lense">
+                <p class="form-lense__group">
+                    <label for="customProduct" class="form-lense__label">Selectionner une taille de lentille</label>
+                    <select id="customProduct" class="form-lense__select"></select>
+                </p>
+                <input class="btn btn__cta btn__cta--cart" type="submit" value="Ajouter au panier">
+            </form>
+        </div>
+        
         <p class="alert alert--green alert--hidden">
             Produit ajouté au panier
         </p>

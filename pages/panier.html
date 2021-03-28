@@ -7,31 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orinoco - Remonter le temps avec nos caméras vintage </title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" href="../assets/css/style.css" as="style">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script defer type="module" src="../assets/js/index.js"></script>
 </head>
 
 <body>
-    <header class="header">
-        <div class="header__content">
-            <div class="logo-box">
-                <img src="../assets/img/logo.png" alt="Logo de l'entreprise Orinoco" class="logo">
-            </div>
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="../" class="nav__link">Accueil</a></li>
-                    <li class="nav__item"><a href="panier.html" class="nav__link">Mon panier</a></li>
-                </ul>
-            </nav>
+    <header class="header__top-box">
+        <div class="header__logo-box">
+            <img src="../assets/img/logo.png" alt="Logo Orinoco" class="header__logo">
         </div>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="/" class="nav__link">Accueil</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">Contact</a>
+                </li>
+                <li class="nav__item">
+                    <a href="/pages/panier.html" class="nav__link">Panier</a>
+                </li>
+            </ul>
+        </nav>
     </header>
-    <main class="products" id="products">
+    <main id="render">
         <table class="cart-array hidden">
             <thead class="cart-array__head">
                 <tr>
-                    <th></th>
+                    <th>Image</th>
                     <th>Nom du produit</th>
                     <th>Prix unitaire</th>
                     <th>Quantité</th>
@@ -49,7 +54,7 @@
             </tfoot>
         </table>
     </main>
-    <hr>
+    
     <div class="form-content hidden">
         <h3 class="heading-3">Valider ma commande </h3>
         <form action="" method="post" class="form">

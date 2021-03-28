@@ -5,6 +5,7 @@ export const productsAnchor =  document.querySelector("#products");
 
 //Page Produit
 export const btnAddToart = document.querySelector(".btn__cta--cart");
+export const rightBox = document.querySelector(".right-box");
 
 //Page Panier
 export const formContent = document.querySelector(".form-content");
