@@ -1,3 +1,5 @@
+import {productsAnchor} from "./dom.js";
+
 /**
  * Récupère les paramètres d'une URL
  * @param  {...String | String} param Peut prendre en argument un ou plusieurs noms de paramètre d'url
@@ -37,4 +39,10 @@ export const stringVerif = (str) => {
     })
 
     return result;
+}
+
+export const scrollTo = () => {
+    productsAnchor.scrollIntoView({
+        behavior: "smooth"
+    });
 }

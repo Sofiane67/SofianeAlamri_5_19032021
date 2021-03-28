@@ -9,10 +9,11 @@ export default class RenderProduct{
      */
     static template(data){
         const page = new URL(window.location.href).pathname;
+        console.log(page)
         return `
             <figure class="camera">
                 <div class="camera__img-box">
-                    <img src="${data.imageUrl}" alt="" class="camera__img">
+                    ${page === "/" ? `<div class="camera__img-hidden"><img src="${data.imageUrl}" alt="" class="camera__img"><img src="${data.imageUrl}" alt="" class="camera__img camera__img-hover"></div>` : `<img src="${data.imageUrl}" alt="" class="camera__img">`}
                 </div>
                 <figcaption class="camera__caption">
                     <p class="camera__name">${data.name}</p>
@@ -29,7 +30,7 @@ export default class RenderProduct{
      * @param {Array} products Tableau retourné par l'api fetch
      */
     static renderHomePage(products){
-        products.map(product => productsContainer.insertAdjacentHTML("afterbegin", `<a href="/pages/produit.html?id=${product._id}" class="card">${this.template(product)}</a>`));
+        products.map(product => productsContainer.insertAdjacentHTML("afterbegin", `<a href="/pages/produit.html?id=${product._id}" class="card">${this.template(product)}  <span class="card__icon"><i class="far fa-eye"></i></span> </a>`));
     }
 
     /**

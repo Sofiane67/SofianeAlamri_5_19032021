@@ -1,5 +1,7 @@
-export const productsContainer = document.querySelector("#products");
+export const productsContainer = document.querySelector("#render");
 export const selectElement = document.querySelector("#customProduct");
+export const btnScrollTo = document.querySelector(".header__hero-btn");
+export const productsAnchor =  document.querySelector("#products");
 
 //Page Produit
 export const btnAddToart = document.querySelector(".btn__cta--cart");

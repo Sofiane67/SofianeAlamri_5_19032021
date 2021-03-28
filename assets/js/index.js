@@ -1,5 +1,6 @@
 import controller from "./controller/controller.js"
-import { btnAddToart, productsContainer } from "./helpers/dom.js";
+import { btnAddToart, btnScrollTo} from "./helpers/dom.js";
+import {scrollTo} from "./helpers/functions.js";
 
 const page = new URL(window.location.href).pathname;
 
@@ -10,11 +11,12 @@ switch(page){
         break;
     case "/pages/panier.html":
         controller.cartPage();
-        // productsContainer.addEventListener("click", controller.removeProduct.bind(controller));
         controller.sendOrder();
         break;
     case "/pages/confirmation.html":
         controller.orderConfirmation();
         break;
-    default: controller.home();
+    default: 
+    controller.home();
+    btnScrollTo.addEventListener("click", scrollTo);
 }
