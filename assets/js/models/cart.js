@@ -41,13 +41,12 @@ export default class Cart{
     removeProduct(e) {
 
         if (e.target.classList.contains("cart-array__btn--delete")){
+            console.log("ok")
             const id = e.target.dataset.id;
 
             const productStored = JSON.parse(localStorage.getItem("cameras"));
             const productToBeRemoved = findOneProduct(productStored, id);
             const index = productStored.indexOf(productToBeRemoved);
-
-            console.log(id)
 
             productStored.splice(index, 1);
 

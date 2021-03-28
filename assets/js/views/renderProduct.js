@@ -3,34 +3,32 @@ import {getUrlParams, findOneProduct} from "../helpers/functions.js";
 
 export default class RenderProduct{
     /**
-     * Génére un template html pour afficher un produit
-     * @param {Array} data Tableau retourné par l'api fetch contenant tous les produits
-     * @returns {String}
-     */
-    static template(data){
-        const page = new URL(window.location.href).pathname;
-        console.log(page)
-        return `
-            <figure class="camera">
-                <div class="camera__img-box">
-                    ${page === "/" ? `<div class="camera__img-hidden"><img src="${data.imageUrl}" alt="" class="camera__img"><img src="${data.imageUrl}" alt="" class="camera__img camera__img-hover"></div>` : `<img src="${data.imageUrl}" alt="" class="camera__img">`}
-                </div>
-                <figcaption class="camera__caption">
-                    <p class="camera__name">${data.name}</p>
-                    ${getUrlParams("id") ? `<p class="camera__description">${data.description}</p>`:""}
-                    <p class="camera__price">${data.price/100}€</p>
-                    ${page === "/pages/panier.html" ? `<button class="btn btn--delete" data-id="${data._id}">Supprimer</button>`:""}
-                </figcaption>
-            </figure>
-        `;
-    }
-
-    /**
      * Affiche sur la page d'accueil tous les produits retournés par l'API
      * @param {Array} products Tableau retourné par l'api fetch
      */
     static renderHomePage(products){
-        products.map(product => productsContainer.insertAdjacentHTML("afterbegin", `<a href="/pages/produit.html?id=${product._id}" class="card">${this.template(product)}  <span class="card__icon"><img src="assets/img/eye.svg" alt="icone oeil"></span> </a>`));
+
+        products.map(product => {
+            const html = `
+                <a href="/pages/produit.html?id=${product._id}" class="card">
+                    <figure class="camera">
+                        <div class="camera__img-box">
+                            <div class="camera__img-hidden">
+                                <img src="${product.imageUrl}" alt="" class="camera__img">
+                                <img src="${product.imageUrl}" alt="" class="camera__img camera__img-hover">
+                            </div>
+                        </div>
+                        <figcaption class="camera__caption">
+                            <p class="camera__name">${product.name}</p>
+                            ${getUrlParams("id") ? `<p class="camera__description">${product.description}</p>` : ""}
+                            <p class="camera__price">${product.price / 100}€</p>
+                        </figcaption>
+                    </figure>
+                    <span class="card__icon"><img src="assets/img/eye.svg" alt="icone oeil"></span> 
+                </a>
+            `;
+            productsContainer.insertAdjacentHTML("afterbegin", html)
+        });
     }
 
     /**
@@ -100,7 +98,7 @@ export default class RenderProduct{
                         <td class="cart-array__total">${(product.price * product.quantity)/100}€</td>
                         <td class="cart-array__trash-box">
                             <button class="cart-array__btn cart-array__btn--delete" data-id=${product._id}>
-                                <span class="cart-array__icon"><img src="../assets/img/trash.svg" alt="icone poubelle"></span>
+                                <span class="cart-array__icon"><img src="../assets/img/trash.svg" alt="icone poubelle" class="cart-array__btn--delete""></span>
                             </button>
                         </td>
    
