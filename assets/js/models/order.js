@@ -84,7 +84,10 @@ export default class Order{
             console.log("send")
             localStorage.removeItem("cameras");
             window.location.href = `/pages/confirmation.html?orderId=${orderId}&total=${totalOrder.textContent}`;
-        }).catch(() => document.querySelector(".alert--red").classList.remove("alert--hidden"));
+        }).catch(() => {
+            document.querySelector(".alert--red").classList.remove("alert--hidden");
+            setTimeout(() => document.querySelector(".alert--red").classList.add("alert--hidden"), 2000);
+    });
     }
 
 }

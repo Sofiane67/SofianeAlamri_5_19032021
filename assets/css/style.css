@@ -220,7 +220,7 @@ a{
 }
 
  .camera__img-hidden{
-
+    position: relative;
     display: flex;
     height: 100%;
     transition: all .5s;
@@ -247,6 +247,12 @@ a{
 .camera__img{
     width: 100%;
     object-fit: cover;
+    position: absolute;
+    height: 100%;
+}
+
+.camera__img-hover{
+    left: 100%;
 }
 
 .camera__caption{
@@ -490,6 +496,8 @@ td{
 
 .form__btn{
     width: 150px;
+    margin-bottom: 15px;
+    position: relative;
 }
 
 /* Page confirmation */
@@ -557,6 +565,7 @@ td{
 }
 
 .alert--green.alert--hidden{
+    width: 300px;
     transform: translate(-50% ,-100%);
     opacity: 0;
 }
@@ -565,7 +574,7 @@ td{
     background-color: #A7F3D0;
     color: #047857;
     height: 50px;
-    width: 80%;
+    width: 300px;
     padding: 0 20px;
     display: flex;
     justify-content: center;

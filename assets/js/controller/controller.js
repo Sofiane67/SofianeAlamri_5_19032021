@@ -86,10 +86,10 @@ class Controller{
             localStorage.setItem("cameras", JSON.stringify(dataToBeStored));
         });
 
-        // const alertSuccess = document.querySelector(".alert--green");
-        // alertSuccess.classList.remove("alert--hidden");
+        const alertSuccess = document.querySelector(".alert--green");
+        alertSuccess.classList.remove("alert--hidden");
 
-        // setTimeout(() => alertSuccess.classList.add("alert--hidden"), 2000);
+        setTimeout(() => alertSuccess.classList.add("alert--hidden"), 2000);
     }
 
 
