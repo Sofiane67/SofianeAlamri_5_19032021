@@ -20,7 +20,6 @@ export default class RenderProduct{
                         </div>
                         <figcaption class="camera__caption">
                             <p class="camera__name">${product.name}</p>
-                            ${getUrlParams("id") ? `<p class="camera__description">${product.description}</p>` : ""}
                             <p class="camera__price">${product.price / 100}€</p>
                         </figcaption>
                     </figure>
@@ -91,7 +90,7 @@ export default class RenderProduct{
                         <td>
                             <span  class="cart-array__quantity-box">
                                 <button class="cart-array__btn cart-array__btn--less cart-array__btn--quantity" data-id=${product._id}>-</button>
-                                <input type="text" class="cart-array__quantity" value="${product.quantity}">
+                                <input type="text" class="cart-array__quantity" value="${product.quantity}" disabled>
                                 <button class="cart-array__btn cart-array__btn--more cart-array__btn--quantity" data-id=${product._id}>+</button>
                             </span>
                         </td>

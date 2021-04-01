@@ -5,7 +5,7 @@ import { findOneProduct } from "../helpers/functions.js";
 export default class Cart{
 
     constructor(){
-        tableBody.addEventListener("click", this.lessQuantity.bind(this));
+        tableBody.addEventListener("click", this.quantityManager.bind(this));
         tableBody.addEventListener("click", this.removeProduct.bind(this));
         this.cartPage();
     }
@@ -41,7 +41,6 @@ export default class Cart{
     removeProduct(e) {
 
         if (e.target.classList.contains("cart-array__btn--delete")){
-            console.log("ok")
             const id = e.target.dataset.id;
 
             const productStored = JSON.parse(localStorage.getItem("cameras"));
@@ -66,7 +65,7 @@ export default class Cart{
      * @param {Object} e Objet event
      * @returns 
      */
-    lessQuantity(e){
+    quantityManager(e){
 
         if (!e.target.classList.contains("cart-array__btn--quantity")) return;
 

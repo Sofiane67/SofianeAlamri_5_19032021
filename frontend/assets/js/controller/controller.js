@@ -32,8 +32,8 @@ class Controller{
     }
 
     /**
- * Ajoute un produit au panier
- */
+     * Ajoute un produit au panier
+     */
     addToCart(e) {
         e.preventDefault();
         const param = e.target.dataset.id;
@@ -91,7 +91,6 @@ class Controller{
 
         setTimeout(() => alertSuccess.classList.add("alert--hidden"), 2000);
     }
-
 
     /**
      * Crée une nouvelle commande (objet Order)

@@ -81,7 +81,6 @@ export default class Order{
         })
         .then(data => {
             const orderId = data.orderId;
-            console.log("send")
             localStorage.removeItem("cameras");
             window.location.href = `/pages/confirmation.html?orderId=${orderId}&total=${totalOrder.textContent}`;
         }).catch(() => {
