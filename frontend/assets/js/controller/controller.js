@@ -21,7 +21,9 @@ class Controller{
     * Affiche un produit sur la page produit
     */
     productPage(){
-        products.then(products => View.renderOneProduct(products))
+       const id = getUrlParams();
+       const product = ProductManager.getOneProduct(id);
+       product.then(product => View.renderOneProduct(product));
     }
 
     /**
@@ -37,10 +39,10 @@ class Controller{
     addToCart(e) {
         e.preventDefault();
         const param = e.target.dataset.id;
+        const product = ProductManager.getOneProduct(param);
 
-        products.then(products => {
-            const product = findOneProduct(products, param);
-
+        product.then(product => {
+            console.log(product)
             // Création de l'objet correspondant a un produit qui sera stocké dans le local storage
             const newCart = {
                 _id: product._id,

@@ -32,33 +32,29 @@ export default class RenderProduct{
 
     /**
      * Récupère un produit en fonction du paramètre de l'url et l'affiche
-     * @param {Array} products Tableau retourné par l'api fetch
+     * @param {Object} product Objet correspondant à un produit
      */
-    static renderOneProduct(products){
-        const param = getUrlParams();
-
-        //Récupère le produit correspondant a l'id en paramètre
-        const oneProduct = findOneProduct(products, param);
+    static renderOneProduct(product){
 
         const imageHtml = `
             <div class="left-box">
-                <img src="${oneProduct.imageUrl}" alt="" class="img">
+                <img src="${product.imageUrl}" alt="" class="img">
             </div>
         `;
 
         const detailsHtml = `
             <div class="details">
-                <p class="details__name">${oneProduct.name}</p>
-                <p class="details__price">${oneProduct.price/100}€</p>
-                <p class="details__description">${oneProduct.description}</p>
+                <p class="details__name">${product.name}</p>
+                <p class="details__price">${product.price/100}€</p>
+                <p class="details__description">${product.description}</p>
             </div>
         `;
 
         productsContainer.insertAdjacentHTML("afterbegin", imageHtml);
         rightBox.insertAdjacentHTML("afterbegin", detailsHtml);
-        btnAddToart.setAttribute("data-id", param);
+        btnAddToart.setAttribute("data-id", product._id);
 
-        oneProduct.lenses.forEach(lense => selectElement.insertAdjacentHTML("afterbegin", `<option value="${lense}">${lense}</option>`));
+        product.lenses.forEach(lense => selectElement.insertAdjacentHTML("afterbegin", `<option value="${lense}">${lense}</option>`));
     }
 
     /**
