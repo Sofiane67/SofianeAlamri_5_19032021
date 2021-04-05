@@ -21,22 +21,28 @@ export default class Order{
        
         //Teste la validité des informations saisie par l'utilisateur
         dataToBeTest.map(data => {
+
             if(data[0] !== "email"){
                 if(!stringVerif(data[1])){
-                    if (data[0] !== "address" && /[0-9]/g.test(data[1])){
-                        return;
+                    if (data[0] !== "address" && /[0-9]/g.test(data[1]) || data[1] === ""){
+                        inputElement[data[0]].classList.add("form__input--error");
                     }else{
                         contact[data[0]] = data[1];
+                        inputElement[data[0]].classList.remove("form__input--error");
                     }
                     
+                }else{
+                    inputElement[data[0]].classList.add("form__input--error");
                 }
             }else if(data[0] === "email"){
-                if (/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/.test(data[1])) {
+                if (!/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/.test(data[1]) || data[1] === "") {
+                    inputElement[data[0]].classList.add("form__input--error");
+                }else{
                     contact[data[0]] = data[1];
+                    inputElement[data[0]].classList.remove("form__input--error");
                 }
             }
         })
-
         return contact;
     }
 

@@ -491,6 +491,11 @@ td{
     border: solid 1.5px #e4e2e2;
 }
 
+.form__input--error{
+    border: solid 1.5px #ef4444;
+    box-shadow: 0 0 5px rgba(239, 68, 68, 1);
+}
+
 .form__input:focus{
     border: solid 1.5px #a749ff;
 }
