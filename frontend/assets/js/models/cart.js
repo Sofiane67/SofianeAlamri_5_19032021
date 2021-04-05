@@ -39,9 +39,10 @@ export default class Cart{
      *Supprime un produit du panier
      */
     removeProduct(e) {
-
-        if (e.target.classList.contains("cart-array__btn--delete")){
-            const id = e.target.dataset.id;
+        
+        if (e.target.closest(".cart-array__btn--delete")){
+            
+            const id = e.target.closest(".cart-array__btn--delete").dataset.id;
 
             const productStored = JSON.parse(localStorage.getItem("cameras"));
             const productToBeRemoved = findOneProduct(productStored, id);
@@ -51,7 +52,7 @@ export default class Cart{
 
             this.localStorageManager(productStored);
 
-            //Mise à jour de l'affichage sans recharger la page
+            // Mise à jour de l'affichage sans recharger la page
             this.renderPageWithAjax();
              
         }

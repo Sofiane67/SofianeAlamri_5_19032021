@@ -93,7 +93,7 @@ export default class RenderProduct{
                         <td class="cart-array__total">${(product.price * product.quantity)/100}€</td>
                         <td class="cart-array__trash-box">
                             <button class="cart-array__btn cart-array__btn--delete" data-id=${product._id}>
-                                <span class="cart-array__icon"><img src="../assets/img/trash.svg" alt="icone poubelle" class="cart-array__btn--delete""></span>
+                                <span class="cart-array__icon"><img src="../assets/img/trash.svg" alt="icone poubelle" class=""></span>
                             </button>
                         </td>
    
